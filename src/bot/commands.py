@@ -96,7 +96,6 @@ async def gpt_entry(message: types.Message, state: FSMContext):
     await send_html_message(message, text)
     await state.set_state(GptStates.waiting_for_question)
 
-
 @router.message(GptStates.waiting_for_question)
 async def gpt_reply(
     message: types.Message,
@@ -117,7 +116,7 @@ async def gpt_reply(
     await session_repository.add_message(session_id, role="system", content=reply)
 
     await send_html_message(message, reply)
-
+    await state.clear()
 
 @router.message(F.text == "/talk")
 async def talk_to_figure(message: Message, state: FSMContext):
