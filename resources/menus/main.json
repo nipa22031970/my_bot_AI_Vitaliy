@@ -1,0 +1,10 @@
+
+{
+    "menu": [
+        {"command": "/start", "description": "Головне меню бота"},
+        {"command": "/random", "description": "Дізнатись випадковий факт"},
+        {"command": "/gpt", "description": "Задати питання ChatGPT"},
+        {"command": "/talk", "description": "Поговорити з відомою особистістю"},
+        {"command": "/quiz", "description": "Перевірити свої знання"}
+    ]
+}

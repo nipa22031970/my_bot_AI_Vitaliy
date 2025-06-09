@@ -184,8 +184,8 @@ cython_debug/
 task.txt
 
 myenv/ 
-resources/
-/logs
+#resources/
+#/logs
 
 chat_sessions.db
 
