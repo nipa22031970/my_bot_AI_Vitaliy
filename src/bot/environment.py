@@ -1,7 +1,7 @@
-
 from aiogram import BaseMiddleware
 from typing import Callable, Awaitable, Dict, Any
 from aiogram.types import TelegramObject
+
 
 class EnvironmentMiddleware(BaseMiddleware):
     def __init__(self, **kwargs):

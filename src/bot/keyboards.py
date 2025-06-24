@@ -5,8 +5,6 @@ from aiogram.types import (
     KeyboardButton
 )
 
-from src.bot.resource_loader import load_message
-
 
 def get_main_menu_button() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
@@ -17,10 +15,22 @@ def get_main_menu_button() -> InlineKeyboardMarkup:
 
 
 async def get_talk_keyboard():
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🔁 Продовжити", callback_data="talk_continue")],
-        [InlineKeyboardButton(text="🚫 Завершити розмову", callback_data="talk_end")]
-    ])
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="🔁 Продовжити",
+                    callback_data="talk_continue"
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🚫 Завершити розмову",
+                    callback_data="talk_end"
+                )
+            ]
+        ]
+    )
     return keyboard
 
 

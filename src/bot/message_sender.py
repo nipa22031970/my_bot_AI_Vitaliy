@@ -1,6 +1,10 @@
 from aiogram import types
-from aiogram.types import BufferedInputFile
-from aiogram.types import InputFile, BotCommand, BotCommandScopeChat, MenuButtonCommands
+from aiogram.types import (
+    BufferedInputFile,
+    BotCommand,
+    BotCommandScopeDefault,
+    MenuButtonCommands,
+)
 
 
 async def send_html_message(message: types.Message, text: str) -> None:
@@ -19,9 +23,25 @@ async def send_image_bytes(
         caption=caption,
         parse_mode=parse_mode
     )
-    
-    
-async def show_menu(bot, chat_id: int, commands: list[dict]) -> None:
-    command_list = [BotCommand(command=cmd["command"], description=cmd["description"]) for cmd in commands]
-    await bot.set_my_commands(command_list, scope=BotCommandScopeChat(chat_id=chat_id))
-    await bot.set_chat_menu_button(chat_id=chat_id, menu_button=MenuButtonCommands())
+
+
+async def show_menu(
+    bot,
+    chat_id: int,
+    commands: list[dict]
+) -> None:
+    command_list = [
+        BotCommand(
+            command=cmd["command"],
+            description=cmd["description"]
+        ) for cmd in commands
+    ]
+    # Регистрируем команды глобально для всех пользователей
+    await bot.set_my_commands(
+        command_list,
+        scope=BotCommandScopeDefault()
+    )
+    await bot.set_chat_menu_button(
+        chat_id=chat_id,
+        menu_button=MenuButtonCommands()
+    )
